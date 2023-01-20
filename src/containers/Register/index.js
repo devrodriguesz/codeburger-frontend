@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 import Logo from '../../assets/logo.svg'
 
-import Button from '../../components/Button'
+import { Button } from '../../components'
 import {
     Container,
     ContainerItens,
@@ -30,7 +30,7 @@ const schema = Yup.object().shape({
 
 })
 
-function Register() {
+export function Register() {
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema)
@@ -97,5 +97,3 @@ function Register() {
         </Container>
     )
 }
-
-export default Register

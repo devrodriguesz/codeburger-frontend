@@ -12,7 +12,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import Logo from '../../assets/logo.svg'
 
-import Button from '../../components/Button'
+import { Button } from '../../components'
 import {
     Container,
     ContainerItens,
@@ -29,7 +29,7 @@ const schema = Yup.object().shape({
     password: Yup.string().required("A senha é um campo obrigatório").min(6, "A senha deve ter pelo menos 6 dígitos")
 })
 
-function Login() {
+export function Login() {
     const navigate = useNavigate()
     const { putUserData } = useUser()
 
@@ -85,5 +85,3 @@ function Login() {
         </Container>
     )
 }
-
-export default Login
