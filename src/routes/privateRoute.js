@@ -1,12 +1,21 @@
 import React from "react"
 import { Navigate } from "react-router-dom"
+import { Header } from "../components/Header"
 
 import PropTypes from 'prop-types'
 
 function PrivateRoute({ children, redirectTo }) {
     const user = localStorage.getItem('codeburger:userData')
 
-    return user ? children : <Navigate to={redirectTo}/>
+    return (
+        user ? 
+        <>
+            <Header/>   
+            {children} 
+        </>     
+        :             
+            <Navigate to={redirectTo}/>
+        )
 
 }
 

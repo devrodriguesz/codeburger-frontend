@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react"
 
+import { useLocation } from "react-router-dom"
+
 import ProductsLogo from '../../assets/products-logo.svg'
 import api from '../../services/api'
 import { CardProduct } from '../../components'
@@ -8,10 +10,20 @@ import formatCurrency from '../../utils/formatCurrency'
 import { Container, ProductsImg, CategoryButton, CategoriesMenu, ProductsContainer } from './styles'
 
 export function Products() {
+
+    let categoryId = 0
+    let {state} = useLocation()
+    if(state){
+        categoryId = parseInt(state.categoryId)
+    }
+
+
     const [categories, setCategories] = useState([])
-    const [activeCategory, setActiveCategory] = useState(0)
+    const [activeCategory, setActiveCategory] = useState(categoryId)
     const [products, setProducts] = useState([])
     const [filteredProducts, setFilteredProducts] = useState([])
+    
+
 
     useEffect(() => {
 
