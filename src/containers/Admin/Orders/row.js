@@ -11,11 +11,17 @@ import Typography from '@mui/material/Typography';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
+import api from '../../../services/api'
+
 import { ProductsImg } from './styles'
 
 export function Row({row}) {
     const [open, setOpen] = React.useState(false);
   
+    async function setNewStatus(id, status) {
+      await api.put(`orders/${id}`, {status})
+    }
+
     return (
       <React.Fragment>
         <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
