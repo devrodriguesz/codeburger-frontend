@@ -87,9 +87,10 @@ export function Row({row, setOrders, orders}) {
                   </TableHead>
                   <TableBody>
                     {row.products.map((productRow) => (
-                      <TableRow key={productRow.quantity}>
+                      <TableRow key={productRow.quantity}>                        
                         <TableCell component="th" scope="row">
                           {productRow.date}
+                        <TableCell >{productRow.quantity}</TableCell>
                         </TableCell>
                         <TableCell>{productRow.name}</TableCell>
                         <TableCell>{productRow.category}</TableCell>
