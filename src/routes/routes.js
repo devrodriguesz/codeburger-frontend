@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 import { Login, Register, Home, Products, Cart, Admin } from '../containers'
 import PrivateRoute from './privateRoute'
+import paths from '../constants/paths'
 
 function MyRoutes() {
 
@@ -26,7 +27,12 @@ function MyRoutes() {
                         <Cart />   
                     </PrivateRoute>
                 } />
-                <Route path="/pedidos" element={
+                <Route path={paths.Order} element={
+                    <PrivateRoute isAdmin redirectTo="/">
+                        <Admin />   
+                    </PrivateRoute>
+                } />
+                <Route path={paths.Products} element={
                     <PrivateRoute isAdmin redirectTo="/">
                         <Admin />   
                     </PrivateRoute>
