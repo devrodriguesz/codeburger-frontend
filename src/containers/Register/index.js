@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 import Logo from '../../assets/logo.svg'
 
-import { Button } from '../../components'
+import { Button, ErrorMessage } from '../../components'
 import {
     Container,
     ContainerItens,
@@ -19,7 +19,6 @@ import {
     Label,
     Input,
     SignInLink,
-    ErrorMessage,
 } from './styles'
 
 const schema = Yup.object().shape({

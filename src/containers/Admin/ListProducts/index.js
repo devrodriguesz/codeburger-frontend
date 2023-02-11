@@ -3,6 +3,9 @@ import api from '../../../services/api'
 
 import formatCurrency from '../../../utils/formatCurrency'
 
+import { useNavigate } from "react-router-dom";
+import paths from "../../../constants/paths";
+
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -17,7 +20,8 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import { Container, Image, EditIconStyled } from './styles'
 
 function ListProducts() {
-    const [products, setProducts] = useState([])
+    const [products, setProducts] = useState()
+    const navigate = useNavigate()
 
     useEffect(() => {
         async function loadOrders() {
@@ -35,6 +39,10 @@ function ListProducts() {
         return <CancelIcon style={{color: '#FF0000'}} />
     }
 
+    function editProduct(product){
+        navigate(paths.EditProduct, {state: product} )
+    }
+
     return (
         <Container>
             <TableContainer component={Paper}>
@@ -49,7 +57,7 @@ function ListProducts() {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {products.map((product) => (
+                        { products && products.map((product) => (
                             <TableRow
                                 key={product.id}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -63,7 +71,7 @@ function ListProducts() {
                                     <Image src={product.url} alt="imagem-produto" />
                                 </TableCell>
                                 <TableCell align="center">
-                                    <EditIconStyled />
+                                    <EditIconStyled onClick={()=> editProduct(product)} />
                                 </TableCell>
                             </TableRow>
                         ))}
